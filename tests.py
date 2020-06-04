@@ -2,6 +2,8 @@ import pytest
 from typing import Iterable
 from index import crawler, Bush
 
+def test_crawler_max():
+    assert crawler('1 2 3 4 5') == 4
 
 def test_crawler_small():
     with pytest.raises(ValueError,match=r"garden is too .*"):
