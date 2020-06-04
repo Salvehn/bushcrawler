@@ -5,12 +5,16 @@ from index import crawler, Bush
 
 def test_crawler_small():
     with pytest.raises(ValueError,match=r"garden is too .*"):
-        crawler([Bush(i) for i in range(2)])
+        crawler('1 2')
 
 def test_crawler_big():
     with pytest.raises(ValueError,match=r"garden is too .*"):
-        crawler([Bush(i) for i in range(2147483647)])
+        crawler(' '.join([str(i) for i in range(1000)]))
 
-def test_crawler_instance():
-    with pytest.raises(ValueError,match=r"wrong bush grade"):
-        crawler([i for i in range(214)])
+def test_crawler_inputlen():
+    with pytest.raises(ValueError,match=r"input str too short"):
+        crawler('')
+
+def test_crawler_digits():
+    with pytest.raises(ValueError,match=r"incorrect user input"):
+        crawler('f a 3 2')
