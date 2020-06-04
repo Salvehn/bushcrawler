@@ -2,6 +2,13 @@ import pytest
 from typing import Iterable
 from index import crawler, Bush
 
+
+def test_crawler_maxissix():
+    assert crawler('1 2 3 4 5 6 7') == 6
+
+def test_crawler_maxisten():
+    assert crawler('1 2 3 4 5 6 7 8 9 10 11') == 10
+
 def test_crawler_max():
     assert crawler('1 2 3 4 5') == 4
 
